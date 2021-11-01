@@ -1,0 +1,6 @@
+/vendor
+/Godeps/
+*.env
+alert.yaml
+.vscode
+.idea/
