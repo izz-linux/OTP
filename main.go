@@ -1,11 +1,23 @@
 package main
 
+import (
+	"os"
+	"github.com/joho/godotenv"
+	"fmt"
+)
+
 func main() {
+	// using .env file for actual values
+	err := godotenv.Load(".env")
+	if err != nil {
+		fmt.Printf("Something bad happened loading environment file::error %s", err)
+	}
+
 	// lastpass
-	secret := "<put_secret_here>"
-	showOTP("lastpass", secret)
+	lpsec := os.Getenv("LASTPASS_SECRET")
+	showOTP("lastpass", lpsec)
 
 	// dropbox
-	secret = "<put_secret_here"
-	showOTP("dropbox", secret)
+	dbsec := os.Getenv("DROPBOX_SECRET")
+	showOTP("dropbox", dbsec)
 }
